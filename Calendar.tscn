@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3tyaje0cav6u"]
+
+[ext_resource type="Script" path="res://CalendarGrid.gd" id="1_4qrwu"]
+[ext_resource type="Script" path="res://Calendar.gd" id="1_rxbwh"]
+[ext_resource type="PackedScene" uid="uid://xmy61cso2m3j" path="res://CalendarDateButton.tscn" id="2_b56ks"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehmn6"]
+bg_color = Color(0.4512, 0.47, 0.47, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.901961, 0.941176, 0.941176, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0id5"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_splrw"]
+bg_color = Color(0.192157, 0.192157, 0.211765, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdgmi"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ehmn6")
+script = ExtResource("1_rxbwh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Calendar" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Calendar"]
+layout_mode = 2
+theme_override_constants/separation = 25
+metadata/_edit_use_anchors_ = true
+
+[node name="MonthEditor" type="HBoxContainer" parent="Calendar/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Decrement" type="Button" parent="Calendar/VBoxContainer/MonthEditor"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_m0id5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0id5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_splrw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_m0id5")
+text = "<"
+
+[node name="MonthYear" type="Button" parent="Calendar/VBoxContainer/MonthEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(516, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_bdgmi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bdgmi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bdgmi")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bdgmi")
+
+[node name="Increment" type="Button" parent="Calendar/VBoxContainer/MonthEditor"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_m0id5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0id5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_splrw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_m0id5")
+text = ">"
+
+[node name="GridContainer" type="GridContainer" parent="Calendar/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 7
+script = ExtResource("1_4qrwu")
+date_button = ExtResource("2_b56ks")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Calendar/VBoxContainer/MonthEditor/Decrement" to="." method="_month_decrement"]
+[connection signal="pressed" from="Calendar/VBoxContainer/MonthEditor/MonthYear" to="." method="_restore_to_current_date"]
+[connection signal="pressed" from="Calendar/VBoxContainer/MonthEditor/Increment" to="." method="_month_increment"]

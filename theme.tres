@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://vbon15rsqwhp"]
+
+[ext_resource type="FontFile" uid="uid://cwysut73mgcqk" path="res://lemon_milk/LEMONMILK-Light.otf" id="1_awtwj"]
+[ext_resource type="FontFile" uid="uid://bugj8ixxb688k" path="res://MonospaceTypewriter.ttf" id="1_vmb1b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t2g6"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+anti_aliasing_size = 0.591
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_saaxy"]
+bg_color = Color(0.235294, 0.235294, 0.25098, 1)
+
+[resource]
+default_font = ExtResource("1_awtwj")
+default_font_size = 100
+Button/styles/normal = SubResource("StyleBoxFlat_6t2g6")
+Label/colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_vmb1b")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_saaxy")

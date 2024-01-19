@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Event" load_steps=3 format=3 uid="uid://cmd34tahonx3m"]
+
+[ext_resource type="Texture2D" uid="uid://btsh0gi5nsdb" path="res://icon.svg" id="1_g37mp"]
+[ext_resource type="Script" path="res://Event.gd" id="1_xm8et"]
+
+[resource]
+script = ExtResource("1_xm8et")
+name = ""
+completed = false
+description = ""
+content = ""
+tag = Array[StringName]([])
+date = {}
+start_time = 0
+end_time = 0
+icon = ExtResource("1_g37mp")
+priority = 0
+recurrent = 0

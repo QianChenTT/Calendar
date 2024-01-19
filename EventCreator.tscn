@@ -1,0 +1,202 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk7sihuarncje"]
+
+[ext_resource type="Script" path="res://EventCreator.gd" id="1_6ewx4"]
+[ext_resource type="PackedScene" uid="uid://c5pvto2yl66gs" path="res://PopupCalendar.tscn" id="2_3dmae"]
+[ext_resource type="PackedScene" uid="uid://bj6y8elpd2fp4" path="res://TimeSetter.tscn" id="2_nodam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ril3r"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bc22u"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4edu"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tsxok"]
+size = Vector2(60, 60)
+
+[sub_resource type="ImageTexture" id="ImageTexture_07wgj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6ejc"]
+bg_color = Color(100, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3adr3"]
+bg_color = Color(0.6, 100, 0.6, 1)
+
+[node name="EventCreator" type="Popup"]
+title = "Time Settings"
+size = Vector2i(1861, 837)
+visible = true
+extend_to_title = true
+script = ExtResource("1_6ewx4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="OverallContianer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/OverallContianer"]
+layout_mode = 2
+
+[node name="Name" type="LineEdit" parent="MarginContainer/OverallContianer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_ril3r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bc22u")
+placeholder_text = "Name"
+
+[node name="Description" type="TextEdit" parent="MarginContainer/OverallContianer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_l4edu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_l4edu")
+placeholder_text = "Description"
+
+[node name="DateContainer" type="HBoxContainer" parent="MarginContainer/OverallContianer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MonthDayYear" type="Button" parent="MarginContainer/OverallContianer/DateContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+
+[node name="StartTimeContainer" type="HBoxContainer" parent="MarginContainer/OverallContianer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="STHour" type="SpinBox" parent="MarginContainer/OverallContianer/StartTimeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("PlaceholderTexture2D_tsxok")
+max_value = 23.0
+alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/OverallContianer/StartTimeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = ":"
+
+[node name="STMinute" type="SpinBox" parent="MarginContainer/OverallContianer/StartTimeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("ImageTexture_07wgj")
+max_value = 55.0
+step = 5.0
+alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/OverallContianer/StartTimeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "-"
+horizontal_alignment = 1
+
+[node name="ETHour" type="SpinBox" parent="MarginContainer/OverallContianer/StartTimeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("ImageTexture_07wgj")
+max_value = 23.0
+alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/OverallContianer/StartTimeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = ":"
+
+[node name="ETMinute" type="SpinBox" parent="MarginContainer/OverallContianer/StartTimeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("ImageTexture_07wgj")
+max_value = 55.0
+step = 5.0
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/OverallContianer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 8
+selected = 0
+popup/item_0/text = ""
+popup/item_0/id = 0
+popup/item_1/text = "Daily"
+popup/item_1/id = 1
+popup/item_2/text = "Work Days"
+popup/item_2/id = 2
+popup/item_3/text = "Weekends"
+popup/item_3/id = 3
+popup/item_4/text = "Weekly"
+popup/item_4/id = 4
+popup/item_5/text = "Monthly"
+popup/item_5/id = 5
+popup/item_6/text = "Yearly"
+popup/item_6/id = 6
+popup/item_7/text = "Custom"
+popup/item_7/id = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/OverallContianer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/OverallContianer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cancel" type="Button" parent="MarginContainer/OverallContianer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_l6ejc")
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/OverallContianer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreateEvent" type="Button" parent="MarginContainer/OverallContianer/HBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_3adr3")
+
+[node name="TimeSetter" parent="MarginContainer/OverallContianer" instance=ExtResource("2_nodam")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="CreateEvent" type="Button" parent="MarginContainer/OverallContianer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PopupCalendar" parent="." instance=ExtResource("2_3dmae")]
+visible = false
+
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]
+[connection signal="pressed" from="MarginContainer/OverallContianer/DateContainer/MonthDayYear" to="." method="_open_calendar"]
+[connection signal="pressed" from="MarginContainer/OverallContianer/HBoxContainer/CenterContainer2/CreateEvent" to="." method="_on_create_event"]
+[connection signal="pressed" from="MarginContainer/OverallContianer/CreateEvent" to="." method="_on_create_event"]

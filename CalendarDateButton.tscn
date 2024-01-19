@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://xmy61cso2m3j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbkj5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtrn5"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws5yb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hbkj5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hbkj5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qtrn5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hbkj5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ws5yb")
+toggle_mode = true
+metadata/_edit_use_anchors_ = true

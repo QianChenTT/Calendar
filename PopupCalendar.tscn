@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5pvto2yl66gs"]
+
+[ext_resource type="Script" path="res://PopupCalendar.gd" id="1_weq7h"]
+[ext_resource type="PackedScene" uid="uid://d3tyaje0cav6u" path="res://Calendar.tscn" id="2_el2r3"]
+
+[node name="PopupCalendar" type="Popup"]
+transparent_bg = true
+size = Vector2i(844, 265)
+visible = true
+unresizable = false
+transparent = true
+extend_to_title = true
+script = ExtResource("1_weq7h")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Calendar" parent="MarginContainer" instance=ExtResource("2_el2r3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]

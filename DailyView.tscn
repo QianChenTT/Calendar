@@ -1,0 +1,636 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmft5dbd7m3fj"]
+
+[ext_resource type="Script" path="res://DailyView.gd" id="1_84k25"]
+[ext_resource type="Theme" uid="uid://vbon15rsqwhp" path="res://theme.tres" id="1_q834t"]
+[ext_resource type="Texture2D" uid="uid://bmr6ecjyi7sxj" path="res://icons8-arrow-100.png" id="3_mwg15"]
+[ext_resource type="StyleBox" uid="uid://d22pp1m0osru7" path="res://WeekDayButtons.tres" id="3_qkfjw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ceb36"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing_size = 0.591
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsm83"]
+bg_color = Color(0.901961, 0.941176, 0.941176, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing_size = 0.591
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_o0fgb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4csmh"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywqp4"]
+bg_color = Color(1, 0, 0, 1)
+border_width_top = 2
+border_color = Color(1, 0, 0, 1)
+
+[node name="Daily" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_q834t")
+script = ExtResource("1_84k25")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_mwg15")
+ignore_texture_size = true
+stretch_mode = 3
+flip_h = true
+
+[node name="Date" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 91)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_font_sizes/font_size = 64
+text = "Date"
+horizontal_alignment = 1
+
+[node name="Button2" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_mwg15")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 60.0
+autostart = true
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 180)
+layout_mode = 2
+
+[node name="WeekDayButtons" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Control/WeekDayButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sun" type="Button" parent="Control/WeekDayButtons/Control"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_pressed_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceb36")
+theme_override_styles/hover = ExtResource("3_qkfjw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsm83")
+theme_override_styles/focus = ExtResource("3_qkfjw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_o0fgb")
+text = "Sun"
+
+[node name="Control2" type="Control" parent="Control/WeekDayButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Mon" type="Button" parent="Control/WeekDayButtons/Control2"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_pressed_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceb36")
+theme_override_styles/hover = ExtResource("3_qkfjw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsm83")
+theme_override_styles/focus = ExtResource("3_qkfjw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_o0fgb")
+text = "Mon"
+
+[node name="Control3" type="Control" parent="Control/WeekDayButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tue" type="Button" parent="Control/WeekDayButtons/Control3"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_pressed_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceb36")
+theme_override_styles/hover = ExtResource("3_qkfjw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsm83")
+theme_override_styles/focus = ExtResource("3_qkfjw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_o0fgb")
+text = "Tue"
+
+[node name="Control4" type="Control" parent="Control/WeekDayButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Wed" type="Button" parent="Control/WeekDayButtons/Control4"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_pressed_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceb36")
+theme_override_styles/hover = ExtResource("3_qkfjw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsm83")
+theme_override_styles/focus = ExtResource("3_qkfjw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_o0fgb")
+text = "Wed"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control5" type="Control" parent="Control/WeekDayButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Thu" type="Button" parent="Control/WeekDayButtons/Control5"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_pressed_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceb36")
+theme_override_styles/hover = ExtResource("3_qkfjw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsm83")
+theme_override_styles/focus = ExtResource("3_qkfjw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_o0fgb")
+text = "Thu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control6" type="Control" parent="Control/WeekDayButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Fri" type="Button" parent="Control/WeekDayButtons/Control6"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_pressed_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceb36")
+theme_override_styles/hover = ExtResource("3_qkfjw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsm83")
+theme_override_styles/focus = ExtResource("3_qkfjw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_o0fgb")
+text = "Fri"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control7" type="Control" parent="Control/WeekDayButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sat" type="Button" parent="Control/WeekDayButtons/Control7"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_pressed_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ceb36")
+theme_override_styles/hover = ExtResource("3_qkfjw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nsm83")
+theme_override_styles/focus = ExtResource("3_qkfjw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_o0fgb")
+text = "Sat"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+split_offset = 150
+dragger_visibility = 1
+
+[node name="TimeLabels" type="Control" parent="ScrollContainer/MarginContainer/HSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="EventPanelHolder" type="Control" parent="ScrollContainer/MarginContainer/HSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HourLines" type="Control" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator4" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator5" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator6" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator7" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator8" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator9" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator10" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator11" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator12" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator13" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator14" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator15" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator16" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator17" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator18" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator19" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator20" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator21" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator22" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator23" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator24" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder/HourLines"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_4csmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="EventPanel" type="HBoxContainer" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLine" type="HSeparator" parent="ScrollContainer/MarginContainer/HSplitContainer/EventPanelHolder"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_ywqp4")
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="update_content" binds= [-7]]
+[connection signal="pressed" from="HBoxContainer/Button2" to="." method="update_content" binds= [7]]
+[connection signal="pressed" from="Control/WeekDayButtons/Control/Sun" to="." method="_on_weekday_pressed" binds= [0]]
+[connection signal="pressed" from="Control/WeekDayButtons/Control2/Mon" to="." method="_on_weekday_pressed" binds= [1]]
+[connection signal="pressed" from="Control/WeekDayButtons/Control3/Tue" to="." method="_on_weekday_pressed" binds= [2]]
+[connection signal="pressed" from="Control/WeekDayButtons/Control4/Wed" to="." method="_on_weekday_pressed" binds= [3]]
+[connection signal="pressed" from="Control/WeekDayButtons/Control5/Thu" to="." method="_on_weekday_pressed" binds= [4]]
+[connection signal="pressed" from="Control/WeekDayButtons/Control6/Fri" to="." method="_on_weekday_pressed" binds= [5]]
+[connection signal="pressed" from="Control/WeekDayButtons/Control7/Sat" to="." method="_on_weekday_pressed" binds= [6]]

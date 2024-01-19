@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbwca5ux7gnp"]
+
+[ext_resource type="Script" path="res://CalendarView.gd" id="1_vkrgp"]
+[ext_resource type="PackedScene" uid="uid://dmft5dbd7m3fj" path="res://DailyView.tscn" id="2_4l4ew"]
+[ext_resource type="PackedScene" uid="uid://c6u3qbhld6gi3" path="res://EventEditor.tscn" id="2_fkuwp"]
+[ext_resource type="PackedScene" uid="uid://bk7sihuarncje" path="res://EventCreator.tscn" id="3_v4y8a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyxov"]
+bg_color = Color(0.901961, 0.941176, 0.941176, 1)
+corner_radius_top_left = 180
+corner_radius_top_right = 180
+corner_radius_bottom_right = 180
+corner_radius_bottom_left = 180
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75wtg"]
+bg_color = Color(0.145098, 0.145098, 0.156863, 1)
+corner_radius_top_left = 180
+corner_radius_top_right = 180
+corner_radius_bottom_right = 180
+corner_radius_bottom_left = 180
+
+[node name="CalendarView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vkrgp")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+alignment = 1
+
+[node name="Container" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Container"]
+custom_minimum_size = Vector2(182, 120)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Container2" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/Container2"]
+custom_minimum_size = Vector2(182, 120)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -60.0
+offset_right = 91.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container3" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/Container3"]
+custom_minimum_size = Vector2(182, 120)
+layout_mode = 0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 182.0
+offset_bottom = 60.0
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+tabs_visible = false
+
+[node name="Daily" parent="VBoxContainer/TabContainer" instance=ExtResource("2_4l4ew")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Weekly" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Monthly" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Button" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_hover_color = Color(0.901961, 0.941176, 0.941176, 1)
+theme_override_colors/font_focus_color = Color(0.145098, 0.145098, 0.156863, 1)
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_gyxov")
+theme_override_styles/hover = SubResource("StyleBoxFlat_75wtg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_75wtg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gyxov")
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="EventEditor" parent="." instance=ExtResource("2_fkuwp")]
+layout_mode = 1
+
+[node name="EventCreator" parent="." instance=ExtResource("3_v4y8a")]
+visible = false
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_create_event"]

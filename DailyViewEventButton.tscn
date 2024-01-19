@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv6kvi3bhnras"]
+
+[ext_resource type="Script" path="res://DailyViewEventButton.gd" id="1_87qc5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3k03"]
+bg_color = Color(0, 0, 100, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0jgj"]
+bg_color = Color(0.2, 0.2, 100, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu4g8"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exp7o"]
+bg_color = Color(100, 0, 0, 1)
+
+[node name="DailyViewEventButton" type="Button"]
+custom_minimum_size = Vector2(0, 15)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3k03")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y0jgj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0jgj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_y0jgj")
+script = ExtResource("1_87qc5")
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = -18.0
+theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+offset_right = 1.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 36
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="."]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_bu4g8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_exp7o")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
