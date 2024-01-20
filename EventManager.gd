@@ -57,12 +57,43 @@ func add_event(event: Event):
 
 
 func get_day_events(date: Dictionary) -> Array:
+	var daily_event := []
 	if !events.has(date.year):
 		return []
 	if !events[date.year].has(date.month):
 		return []
 	if !events[date.year][date.month].has(date.day):
 		return []
+	for year in events.keys():
+		for month in events[year].keys():
+			for day in events[year][month].keys():
+				var event: Event = events[year][month][day] 
+				var weekday = Time.get_datetime_dict_from_datetime_string("%04d-%02d-%02dT00:00:00"%[date.year, date.month, date.day], true).weekday
+				match event.recurrent:
+					Event.Recurrent.NONE:
+						if event.year == date.year and event.month == date.month and event.day == date.day:
+							daily_event.append(event)
+					Event.Recurrent.DAILY:
+						daily_event.append(event)
+					Event.Recurrent.WORK_DAYS:
+						if weekday > Time.WEEKDAY_SUNDAY and weekday < Time.WEEKDAY_SATURDAY:
+							daily_event.append(event)
+					Event.Recurrent.WEEKENDS:
+						if weekday == Time.WEEKDAY_SUNDAY or weekday == Time.WEEKDAY_SATURDAY:
+							daily_event.append(event)
+					Event.Recurrent.WEEKLY:
+						if Time.get_datetime_dict_from_datetime_string("%04d-%02d-%02dT00:00:00"%[event.year, event.month, event.day], true).weekday == weekday:
+							daily_event.append(event)
+					Event.Recurrent.MONTHLY:
+						if event.day == date.day or (event.day > Utility.num_of_days(date.month, date.year) and date.day == Utility.num_of_days(date.month, date.year)):
+							daily_event.append(event)
+					Event.Recurrent.YEARLY:
+						if event.month == date.month and event.day == date.day:
+							daily_event.append(event)
+					Event.Recurrent.CUSTOM_DAYS:
+						for custom_day in Event.Recurrent.YEARLY:
+							if Time.get_datetime_dict_from_datetime_string("%04d-%02d-%02dT00:00:00"%[event.year, event.month, event.day], true).weekday == weekday:
+								daily_event.append(event)
 	return events[date.year][date.month][date.day]
 
 

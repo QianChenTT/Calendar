@@ -7,7 +7,7 @@ enum Mode {CREATING, EDITING}
 var edit_mode := Mode.CREATING
 var editing_event: Event
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	EventManager.event_created.connect(func(event: Event): reset_input())
 	$PopupCalendar.date_changed.connect(_on_date_changed)
