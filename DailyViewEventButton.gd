@@ -8,6 +8,7 @@ var event: Event:
 		event = value
 		$Name.text = event.name
 
+
 var state = State.IDLE
 var pivot: Vector2
 var active := true
